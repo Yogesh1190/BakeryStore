@@ -1,0 +1,55 @@
+{
+	"documentType": "bakeryProductStore",
+	"products": [
+		{
+			"code": "VS5",
+			"name": "Vegemite Scroll",
+			"pack": [ 
+				{
+					"quantity": 3,
+					"cost": 6.99
+				},
+				{
+					"quantity": 5,
+					"cost": 8.99
+				}
+			]
+		},
+		{
+			"code": "MB11",
+			"name": "Blueberry Muffin",
+			"pack": [
+				{
+					"quantity": 2,
+					"cost": 9.95
+				},
+				{
+					"quantity": 5,
+					"cost": 16.95
+				},
+				{
+					"quantity": 8,
+					"cost": 24.95
+				}			
+			]			
+		},
+		{
+			"code": "CF",
+			"name": "Croissant",
+			"pack": [
+				{
+					"quantity": 3,
+					"cost": 5.95
+				},
+				{
+					"quantity": 5,
+					"cost": 9.95
+				},
+				{
+					"quantity": 9,
+					"cost": 9.99
+				}			
+			]
+		}
+	]
+}
