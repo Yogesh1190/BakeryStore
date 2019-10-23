@@ -1,5 +1,12 @@
 package com.store.mybakery.main;
 
+import org.json.simple.JSONObject;
+
+import com.store.mybakery.core.LoadProducts;
+import com.store.mybakery.impl.CheckoutOrder;
+import com.store.mybakery.model.ProductInput;
+import com.store.mybakery.util.UserInput;
+
 /**
  * 
  * @author Yogesh Shisode
@@ -9,6 +16,14 @@ public class BakeryStore
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	CheckoutOrder checkoutOrder = new CheckoutOrder();
+		try{
+			JSONObject products = LoadProducts.loadProducts();
+			ProductInput input = UserInput.input(); 
+			
+			checkoutOrder.calculate(products, input);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
     }
 }
