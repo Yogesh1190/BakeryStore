@@ -17,10 +17,15 @@ import com.store.mybakery.util.Constants;
 /**
  * 
  * @author Yogesh Shisode
- * @description This class is used to load product details from database. For now we are loading JSON file
+ * @description This class is used to load product details from datastore. For now we are loading JSON file
  * 				containing product details.
  */
 public class LoadProducts {
+	
+	/**
+	 * This function is created to load the available products from the datastore.
+	 * @return This will return the product list.
+	 */
 	public static JSONObject loadProducts(){
 		Reader reader = null;
 		JSONObject products = null;
@@ -34,8 +39,14 @@ public class LoadProducts {
 		return products;
 	}
 	
+	/**
+	 * This is function is created for fetching available pack details based on users input.
+	 * @param products	This contains all the available products from the bakery.
+	 * @param input	This is user input parameter.
+	 * @return This is return available pack details based on users input.
+	 */
 	public static Map<Integer, Double> getPackDetails(JSONObject products, ProductInput input){
-		JSONArray items = (JSONArray) products.get("products");
+		JSONArray items = (JSONArray) products.get(Constants.PRODUCT_KEY);
 		@SuppressWarnings("unchecked")
 		Iterator<JSONObject> iterator = items.iterator();
 		
@@ -48,20 +59,19 @@ public class LoadProducts {
 		
 		while(iterator.hasNext()){
 			JSONObject test = iterator.next();
-			if(String.valueOf(test.get("code")).equalsIgnoreCase(input.getCode())){
-				JSONArray packs = (JSONArray) test.get("pack");
+			if(String.valueOf(test.get(Constants.CODE_KEY)).equalsIgnoreCase(input.getCode())){
+				JSONArray packs = (JSONArray) test.get(Constants.PACK_KEY);
 				@SuppressWarnings("unchecked")
 				Iterator<JSONObject> packsIterator = packs.iterator();
 				while(packsIterator.hasNext()){
 					JSONObject packDetails = packsIterator.next();
-					int quantity = Integer.parseInt(packDetails.get("quantity").toString());
-					double cost = Double.parseDouble(packDetails.get("cost").toString());
+					int quantity = Integer.parseInt(packDetails.get(Constants.QUANTITY_KEY).toString());
+					double cost = Double.parseDouble(packDetails.get(Constants.COST_KEY).toString());
 					hashMap.put(quantity, cost);
 				}
 				break;
 			}
 		}
-		
 		return hashMap;
 	}
 }

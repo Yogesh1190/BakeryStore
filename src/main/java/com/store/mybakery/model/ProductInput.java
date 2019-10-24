@@ -1,5 +1,10 @@
 package com.store.mybakery.model;
 
+/**
+ * This pojo class is created to store users input.
+ * @author yogesh
+ *
+ */
 public class ProductInput {
 	private String code;
 	private int quantity;

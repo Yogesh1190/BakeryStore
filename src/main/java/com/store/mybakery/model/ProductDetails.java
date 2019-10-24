@@ -2,6 +2,11 @@ package com.store.mybakery.model;
 
 import java.util.Map;
 
+/**
+ * This pojo class is created to store final best match product for customer. 
+ * @author yogesh
+ *
+ */
 public class ProductDetails {
 	private String code;
 	private int quantity;

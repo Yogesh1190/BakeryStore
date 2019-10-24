@@ -10,7 +10,8 @@ import org.json.simple.JSONObject;
 
 import com.store.mybakery.model.ProductDetails;
 import com.store.mybakery.model.ProductInput;
-import com.store.mybakery.util.Combination;
+import com.store.mybakery.util.Permutation;
+import com.store.mybakery.util.Constants;
 
 /**
  * 
@@ -20,6 +21,14 @@ import com.store.mybakery.util.Combination;
  */
 public class CheckoutOrder {
 
+	/**
+	 * This function is responsible for calculating best match product packs as per the users input.
+	 * This is find out best product at low price.
+	 * @param products	This contains all available product details from bakery store.
+	 * @param packDetails	This contains matched product with pack quantity and price.
+	 * @param input	This contains users input.
+	 * @return This will return class object which has best match product pack value.
+	 */
 	public ProductDetails calculate(JSONObject products, Map<Integer, Double> packDetails, ProductInput input){
 		Set<Integer> set = packDetails.keySet();
 
@@ -27,7 +36,7 @@ public class CheckoutOrder {
 
 		List<Map<Integer, Integer>> finalPackList = new ArrayList<>();
 		List<Integer[]> packsCombination = new ArrayList<>();
-		packsCombination = Combination.permute(integerArray, 0, packsCombination);
+		packsCombination = Permutation.permute(integerArray, 0, packsCombination);
 
 		for (Integer[] integers : packsCombination) {
 			Map<Integer, Integer> response = new HashMap<Integer, Integer>();
@@ -43,7 +52,7 @@ public class CheckoutOrder {
 				finalPackList.add(response);
 		}
 
-		double productCost = 99999;
+		double productCost = Constants.MAX_VAL_CONST;
 		Map<Integer, Integer> packInfo = new HashMap<>();
 
 		for(Map<Integer, Integer> finalPacks : finalPackList) {
