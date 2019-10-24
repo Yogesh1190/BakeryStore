@@ -23,7 +23,6 @@ public class UserInput {
 			productInput.setQuantity(quantity);
 			
 		}catch(Exception ex){
-			ex.printStackTrace();
 			System.out.println("Please provide valid input");
 		}
 		
